@@ -1,6 +1,5 @@
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 public class Main {
 
@@ -15,21 +14,10 @@ public class Main {
         utils.wordsSeparator();
 
         long startTime = System.currentTimeMillis();
-
-        for (int i = 0; i < utils.setOfWordsSets.size(); i++) {
-            utils.findReducibleWords(utils.setOfWordsSets.get(i));
-        }
-
-        Set<String> solution = new HashSet<>();
-        for (String word : utils.allReducibleWords) {
-            if (word.length() == 9) {
-                solution.add(word);
-            }
-        }
-
+        List<String> answer = utils.checkAllWords(utils.all9LetterWords);
         long endTime = System.currentTimeMillis();
         long elapsedTime = endTime - startTime;
-        System.out.println("Elapsed time: " + elapsedTime + " Milliseconds");
-        System.out.println("Number of 9 letter words reducible to 1: " + solution.size());
+        System.out.println("Elapsed time: " + elapsedTime + " nanoseconds");
+        System.out.println("Number of results" + answer.size());
     }
 }
